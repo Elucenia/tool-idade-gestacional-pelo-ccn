@@ -1,0 +1,216 @@
+{
+  "tool": {
+    "id": "idade-gestacional-pelo-ccn",
+    "title": "Idade gestacional pelo CCN",
+    "short": "Datação pelo comprimento cabeça-nádega (Robinson)",
+    "spec": [
+      "ginecologia-e-obstetricia",
+      "radiologia-e-diagnostico-por-imagem"
+    ],
+    "desc": "Calcule a idade gestacional pelo comprimento cabeça-nádega (CCN) com a fórmula de Robinson e veja se a gestação deve ser redatada pelos critérios da ACOG.",
+    "lead": "Estima a idade gestacional pelo comprimento cabeça-nádega medido na ultrassonografia do 1º trimestre e compara com a idade pela DUM, indicando quando redatar.",
+    "fields": [
+      [
+        "ccn",
+        "Comprimento cabeça-nádega (CCN)",
+        "num",
+        {
+          "min": 3,
+          "max": 84,
+          "step": 0.1,
+          "unit": "mm",
+          "ph": "45"
+        }
+      ],
+      [
+        "dum_sem",
+        "IG pela DUM na data do exame: semanas <small>(opcional)</small>",
+        "num",
+        {
+          "min": 4,
+          "max": 20,
+          "step": 1,
+          "unit": "semanas",
+          "ph": "12",
+          "opt": true
+        }
+      ],
+      [
+        "dum_dias",
+        "IG pela DUM: dias",
+        "num",
+        {
+          "min": 0,
+          "max": 6,
+          "step": 1,
+          "unit": "dias",
+          "ph": "0",
+          "opt": true
+        }
+      ]
+    ],
+    "formula": "<p><strong>Robinson e Fleming (1975):</strong> IG (dias) = 8,052 × √CCN (mm) + 23,73.</p><p><strong>Quando redatar (ACOG, Committee Opinion 700):</strong> diferença entre a ultrassonografia e a DUM de mais de 5 dias até 8s 6d, ou de mais de 7 dias entre 9s 0d e 13s 6d.</p>",
+    "table": [
+      [
+        "IG pela ultrassonografia",
+        "Redatar se a diferença para a DUM for"
+      ],
+      [
+        "≤ 8s 6d",
+        "&gt; 5 dias"
+      ],
+      [
+        "9s 0d a 13s 6d",
+        "&gt; 7 dias"
+      ],
+      [
+        "14s 0d a 15s 6d",
+        "&gt; 7 dias (biometria)"
+      ],
+      [
+        "16s 0d a 21s 6d",
+        "&gt; 10 dias (biometria)"
+      ],
+      [
+        "22s 0d a 27s 6d",
+        "&gt; 14 dias (biometria)"
+      ],
+      [
+        "≥ 28s 0d",
+        "&gt; 21 dias (biometria)"
+      ]
+    ],
+    "table_note": "Acima de 84 mm de CCN (cerca de 14 semanas), a datação passa a ser feita pela biometria fetal (circunferência cefálica).",
+    "tips": [
+      "Meça o CCN em corte sagital mediano, com o embrião em posição neutra (nem fletido nem hiperestendido), sem incluir a vesícula vitelina; use a média de 3 medidas.",
+      "O CCN do 1º trimestre é o método mais preciso de datação (erro de cerca de 5 a 7 dias): uma vez redatada, a gestação não deve ser redatada de novo por exames posteriores.",
+      "Gestação sem ultrassonografia antes de 22 semanas tem datação subótima pela ACOG: considere isso ao decidir sobre interrupção eletiva e pós-datismo.",
+      "Em gemelares espontâneas, a ACOG orienta datar pelo maior CCN; em fertilização in vitro, a data da transferência prevalece sobre o CCN."
+    ],
+    "sources": [
+      [
+        "Robinson HP, Fleming JE. A critical evaluation of sonar \"crown-rump length\" measurements. Br J Obstet Gynaecol, 1975.",
+        "https://doi.org/10.1111/j.1471-0528.1975.tb00710.x"
+      ],
+      [
+        "American College of Obstetricians and Gynecologists. Committee Opinion No 700: Methods for Estimating the Due Date. Obstet Gynecol, 2017.",
+        "https://doi.org/10.1097/AOG.0000000000002046"
+      ]
+    ],
+    "cases": [
+      [
+        "CCN 45 mm: 8,052 × 6,708 + 23,73 = 77,7 dias = 11s 1d",
+        {
+          "ccn": 45
+        },
+        {
+          "main": "11s 1d",
+          "raw": {
+            "dias": 77.74
+          },
+          "level": "info"
+        }
+      ],
+      [
+        "CCN 10 mm: 8,052 × 3,162 + 23,73 = 49,2 dias = 7s 0d",
+        {
+          "ccn": 10
+        },
+        {
+          "main": "7s 0d",
+          "raw": {
+            "dias": 49.19
+          }
+        }
+      ],
+      [
+        "CCN 84 mm (limite): 8,052 × 9,165 + 23,73 = 97,5 dias = 14s 0d",
+        {
+          "ccn": 84
+        },
+        {
+          "main": "14s 0d",
+          "raw": {
+            "dias": 97.53
+          }
+        }
+      ],
+      [
+        "CCN 45 mm (78 dias) e DUM 12s 0d (84 dias): diferença de 6 dias ≤ 7, mantém a DUM",
+        {
+          "ccn": 45,
+          "dum_sem": 12,
+          "dum_dias": 0
+        },
+        {
+          "raw": {
+            "dif": -6
+          },
+          "level": "low",
+          "verdict": "Manter"
+        }
+      ],
+      [
+        "CCN 45 mm e DUM 13s 0d (91 dias): diferença de 13 dias > 7, redatar",
+        {
+          "ccn": 45,
+          "dum_sem": 13,
+          "dum_dias": 0
+        },
+        {
+          "raw": {
+            "dif": -13
+          },
+          "level": "mid",
+          "verdict": "Redatar"
+        }
+      ],
+      [
+        "CCN 10 mm (49 dias) e DUM 7s 6d (55 dias): 6 dias > 5 antes de 9 semanas, redatar",
+        {
+          "ccn": 10,
+          "dum_sem": 7,
+          "dum_dias": 6
+        },
+        {
+          "raw": {
+            "dif": -6
+          },
+          "level": "mid"
+        }
+      ]
+    ],
+    "batch": "mulher-crianca",
+    "kind": "Calculadora",
+    "config": null,
+    "areaId": "mulher-crianca",
+    "clinicalReview": "pending",
+    "sourceReview": "pending",
+    "sourceFile": "app/content/ferramentas/mulher-crianca.php",
+    "arithmeticTest": {
+      "status": "passed",
+      "testedAt": "2026-09-25",
+      "total": 6,
+      "passed": 6,
+      "failures": []
+    },
+    "independentArithmeticTest": {
+      "status": "not-tested",
+      "testedAt": null,
+      "total": 0,
+      "passed": 0,
+      "cases": []
+    }
+  },
+  "review": {
+    "status": "needs-review",
+    "reason": "Revisão documental e clínica independente pendente.",
+    "clinicalValidation": "not-performed"
+  },
+  "sourceFile": {
+    "path": "app/content/ferramentas/mulher-crianca.php",
+    "sha256": "c37d3fefb430d6ec19144161e40e9a08247f3a10406e2873c8d6a4be8649917c",
+    "bytes": 81915
+  },
+  "clinicalValidation": "not-performed"
+}

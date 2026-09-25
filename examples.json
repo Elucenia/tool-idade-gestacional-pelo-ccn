@@ -1,0 +1,113 @@
+[
+  {
+    "label": "CCN 45 mm: 8,052 × 6,708 + 23,73 = 77,7 dias = 11s 1d",
+    "input": {
+      "ccn": 45
+    },
+    "expected": {
+      "main": "11s 1d",
+      "raw": {
+        "dias": 77.74
+      },
+      "level": "info"
+    },
+    "originalInput": {
+      "ccn": 45
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "CCN 10 mm: 8,052 × 3,162 + 23,73 = 49,2 dias = 7s 0d",
+    "input": {
+      "ccn": 10
+    },
+    "expected": {
+      "main": "7s 0d",
+      "raw": {
+        "dias": 49.19
+      }
+    },
+    "originalInput": {
+      "ccn": 10
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "CCN 84 mm (limite): 8,052 × 9,165 + 23,73 = 97,5 dias = 14s 0d",
+    "input": {
+      "ccn": 84
+    },
+    "expected": {
+      "main": "14s 0d",
+      "raw": {
+        "dias": 97.53
+      }
+    },
+    "originalInput": {
+      "ccn": 84
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "CCN 45 mm (78 dias) e DUM 12s 0d (84 dias): diferença de 6 dias ≤ 7, mantém a DUM",
+    "input": {
+      "ccn": 45,
+      "dum_sem": 12,
+      "dum_dias": 0
+    },
+    "expected": {
+      "raw": {
+        "dif": -6
+      },
+      "level": "low",
+      "verdict": "Manter"
+    },
+    "originalInput": {
+      "ccn": 45,
+      "dum_sem": 12,
+      "dum_dias": 0
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "CCN 45 mm e DUM 13s 0d (91 dias): diferença de 13 dias > 7, redatar",
+    "input": {
+      "ccn": 45,
+      "dum_sem": 13,
+      "dum_dias": 0
+    },
+    "expected": {
+      "raw": {
+        "dif": -13
+      },
+      "level": "mid",
+      "verdict": "Redatar"
+    },
+    "originalInput": {
+      "ccn": 45,
+      "dum_sem": 13,
+      "dum_dias": 0
+    },
+    "expandedZeroOptions": []
+  },
+  {
+    "label": "CCN 10 mm (49 dias) e DUM 7s 6d (55 dias): 6 dias > 5 antes de 9 semanas, redatar",
+    "input": {
+      "ccn": 10,
+      "dum_sem": 7,
+      "dum_dias": 6
+    },
+    "expected": {
+      "raw": {
+        "dif": -6
+      },
+      "level": "mid"
+    },
+    "originalInput": {
+      "ccn": 10,
+      "dum_sem": 7,
+      "dum_dias": 6
+    },
+    "expandedZeroOptions": []
+  }
+]
