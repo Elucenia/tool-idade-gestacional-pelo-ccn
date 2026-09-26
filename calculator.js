@@ -1,11 +1,11 @@
-/* tool-idade-gestacional-pelo-ccn · Elucenia · https://github.com/Elucenia/tool-idade-gestacional-pelo-ccn
-   Copyright (c) 2026 Elucenia · Felipe Guedes (fgxdev.com). Licensed under the Apache License 2.0: keep this notice and the NOTICE file, and mark your changes.
+/* tool-idade-gestacional-pelo-ccn · ELUCENIA · https://github.com/Elucenia/tool-idade-gestacional-pelo-ccn
+   Copyright (c) 2026 ELUCENIA · Felipe Guedes (fgxdev.com). Licensed under the Apache License 2.0: keep this notice and the NOTICE file, and mark your changes.
    Standalone integration. Package metadata and rights: README.md. */
 (function(root){'use strict';
 function freeze(value){if(value&&typeof value==='object'){for(const item of Object.values(value))freeze(item);Object.freeze(value);}return value;}
 const TOOL=freeze({"id":"idade-gestacional-pelo-ccn","title":"Idade gestacional pelo CCN","fields":[["ccn","Comprimento cabeça-nádega (CCN)","num",{"min":3,"max":84,"step":0.1,"unit":"mm","ph":"45"}],["dum_sem","IG pela DUM na data do exame: semanas <small>(opcional)</small>","num",{"min":4,"max":20,"step":1,"unit":"semanas","ph":"12","opt":true}],["dum_dias","IG pela DUM: dias","num",{"min":0,"max":6,"step":1,"unit":"dias","ph":"0","opt":true}]],"config":null,"reviewStatus":"needs-review","clinicalValidation":"not-performed"});
 const window={};
-/* Elucenia arithmetic registry. No DOM access, storage, telemetry or network requests. */
+/* ELUCENIA arithmetic registry. No DOM access, storage, telemetry or network requests. */
 (function(root){
   'use strict';
   const CALC={fn:Object.create(null)};
